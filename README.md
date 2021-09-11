@@ -1,8 +1,10 @@
-# Dinkie Bitmap Stickers
+# Dinkie Bitmap Stickers <small>for Telegram</small>
 
-本系列表情包为[丁卯点阵体](https://atelier-anchor.com/typefaces/dinkie-bitmap/)的衍生项目，在 11×11 的像素网格中绘制常用 emoji（或微信／微博表情）的 1-bit 版本，并伪装成微信聊天气泡。
+本系列表情包为[丁卯点阵体](https://atelier-anchor.com/typefaces/dinkie-bitmap/)的衍生项目<small>的衍生项目</small>，在 11×11 的像素网格中绘制常用 emoji（或微信／微博表情）的 1-bit 版本，并伪装成 Telegram 聊天气泡。
 
-非标准尺寸的微信表情无法上架表情商店，伪装微信 UI 行为也被表情商店所禁止，因此本系列表情仅通过公开或私人渠道分享使用。
+本贴纸包可在 Telegram 上直接使用。
+
+Telegram 转换由 Eana Hufwe 进行制作和上传。
 
 ## 内容说明
 
@@ -14,16 +16,14 @@ GIF 文件名以英文或汉语拼音随意命名，仅供区分文件，具体�
 
 「丁卯点阵体」旗下的像素 emoji 绘制将长期进行，其中某些 emoji 亦将加入本套表情包。若你有想要我添加的表情符号，请在 [GitHub 页面](https://github.com/willie4624/dinkiebitmapstickers/) 提交 issue。
 
-**注意：由于表情中的聊天气泡是假的，因此发送方的气泡会指向对侧，实际效果以接收方所见为准。**
+**注意：由于贴纸中的聊天气泡是假的，因此发送方的气泡会指向对侧，实际效果以接收方所见为准。**
 
-## 微信表情添加方式
+## 贴纸包添加方式
 
-### 电脑端
+* 暗色版：https://t.me/addstickers/dinkie_dark
+* 亮色版：https://t.me/addstickers/dinkie_light
 
-将 GIF 文件直接拖拽进聊天窗口即可以表情发送，然后使用手机端长按表情添加。
-
-### 手机端
-
-保存 GIF 到手机相册，在微信表情界面点击加号添加即可。
+## 生成
+若要生成其他配色，请使用 `build.py` 中的 `build()` 函数。提供配色名称，前景色和背景色即可。此外，repo 内还提供了大小两种气泡尺寸可以用来生成。生成后的 PNG 文件可直接上传至 Telegram 的 [@Stickers](https://t.me/stickers)。
 
 祝使用愉快！✌️
