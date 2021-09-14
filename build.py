@@ -3,7 +3,6 @@ from PIL import Image
 import glob
 
 #%%
-#%%
 def map_color(image, map):
     image = image.copy()
     for i in range(image.size[0]):
@@ -17,7 +16,7 @@ def map_color(image, map):
 def build(name, fg, bg):
     for path in glob.glob("./gif/*.gif"):
         im = Image.open(path)
-        icon = im.crop((39, 20, 39+44, 20+44)).convert("1").convert("RGBA")
+        icon = im.crop((33, 19, 33+44, 19+44)).convert("1").convert("RGBA")
 
         template = Image.open("./template/template.png")
 
