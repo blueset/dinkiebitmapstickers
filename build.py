@@ -16,7 +16,13 @@ def map_color(image, map):
 def build(name, fg, bg):
     for path in glob.glob("./gif/*.gif"):
         im = Image.open(path)
-        icon = im.crop((33, 19, 33+44, 19+44)).convert("1").convert("RGBA")
+        top, left = 19, 33
+        height = 44
+        if "0-" in path:
+            width = 92
+        else:
+            width = 44
+        icon = im.crop((left, top, left+width, top+height)).convert("1").convert("RGBA")
 
         template = Image.open("./template/template.png")
 

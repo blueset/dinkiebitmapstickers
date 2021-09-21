@@ -2,7 +2,7 @@
 import os
 from dotenv import load_dotenv
 from telethon import TelegramClient
-from typing import Dict
+from typing import Dict, List
 from telethon.tl.types import StickerSet, InputStickerSetID
 from telethon.tl.types.messages import StickerSet as StickerSetM
 from telethon.tl.functions.messages import GetAllStickersRequest, GetStickerSetRequest
@@ -83,6 +83,27 @@ mapping = {
     "z-ke": "🉑",
     "z-nohave": "🈚️",
     "z-okbox": "🆗",
+
+    # 0.11
+    "0-lipu": "🍐🎼",
+    "0-niupi": "🐄🍺",
+    "f-heehee": "🤪",
+    "f-pien": "🥺",
+    "f-ziplip": "🥺",
+    "n-cow": "🐄",
+    "o-beer": "🍺",
+    "o-cola": "🥤",
+    "o-dice": "🎲",
+    "o-game": "🎮",
+    "o-guitar": "🎸",
+    "o-music": "🎼",
+    "o-musicnote": "🎵",
+    "o-pear": "🍐",
+    "o-robot": "🤖",
+    "z-cool": "🆒",
+    "z-hao": "👍",
+    "z-qiang": "👍",
+    "z-zan": "👍",
 }
 
 #%%
@@ -125,11 +146,13 @@ async def populate_pack(theme: str, pack: StickerSet):
 
 
 #%%
-async def partial_populate_pack(theme: str, pack: StickerSet, start: str):
-    keys = list(mapping.keys())
-    idx = keys.index(start)
+async def partial_populate_pack(theme: str, pack: StickerSet, keys: List[str]):
     async with client.conversation("stickers") as conv:
-        for fn in keys[idx:]:
+        await conv.send_message('/addsticker')
+        await conv.get_response()
+        await conv.send_message(pack.short_name)
+        await conv.get_response()
+        for fn in keys:
             emoji = mapping[fn]
             await conv.send_file(f"./output/{theme}/{fn}.png", force_document=True)
             await conv.get_response()
@@ -146,10 +169,21 @@ async def update_pack(theme: str, pack: StickerSet):
 
 #%%
 async def main():
+    print("Starting...")
     await client.start()
+    print("Started")
     packs = await fetch_stickers()
-    await update_pack("light", packs["dinkie_light"])
-    await update_pack("dark", packs["dinkie_dark"])
+    # await update_pack("light", packs["dinkie_light"])
+    # await update_pack("dark", packs["dinkie_dark"])
+    delta = [
+        "0-lipu", "0-niupi", "f-heehee", "f-pien", "f-ziplip", "n-cow", 
+        "o-beer", "o-cola", "o-dice", "o-game", "o-guitar", "o-music", 
+        "o-musicnote", "o-pear", "o-robot", "z-cool", "z-hao", "z-qiang", 
+        "z-zan"
+    ]
+    await partial_populate_pack("dark", packs["dinkie_dark"], delta)
+    await partial_populate_pack("light", packs["dinkie_light"], delta)
 
 # %%
-asyncio.run(main())
+if __name__ == "__main__":
+    asyncio.run(main())
