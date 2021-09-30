@@ -1,3 +1,4 @@
 dotenv
 pillow
 telethon
+tenacity
