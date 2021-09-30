@@ -18,8 +18,8 @@ def build(name, fg, bg):
         im = Image.open(path)
         top, left = 19, 33
         height = 44
-        if "0-" in path:
-            width = 92
+        if "2-" in path:
+            width = 96
         else:
             width = 44
         icon = im.crop((left, top, left+width, top+height)).convert("1").convert("RGBA")
