@@ -8,10 +8,7 @@ from telethon.tl.types.messages import StickerSet as StickerSetM
 from telethon.tl.functions.messages import GetAllStickersRequest, GetStickerSetRequest
 import asyncio
 from tenacity import AsyncRetrying, stop_after_attempt, wait_fixed
-import logging
 
-
-logging.basicConfig(level=logging.DEBUG)
 
 def retry_deco(fn):
     return AsyncRetrying(stop=stop_after_attempt(5), wait=wait_fixed(1)).wraps(fn)
@@ -217,8 +214,8 @@ async def partial_populate_pack(theme: str, pack: StickerSet, keys: List[str]):
             await conv.get_response()
             await retry_deco(conv.send_message)(emoji)
             await conv.get_response()
-        await conv.send_message("/done")
-        await conv.get_response()
+        # await conv.send_message("/done")
+        # await conv.get_response()
 
 
 #%%
